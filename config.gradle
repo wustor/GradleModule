@@ -21,13 +21,11 @@ ext {
             version  : "1.9.1",
     ]
     url = [
-//            "42"     : "https://10.16.17.42:9002/",
-"debug"  : "https://10.16.17.43:9002/",
-//"debug"  : "https://www.cmyynet.com/",
-//"debug"  : "https://test.cmyynet.com/",
-//            "debug"    : "https://10.16.17.206:9002/",
-//            "debug"    : "https://zfb.cmyynet.com/",
-"release": "https://www.cmyynet.com/",
+"debug"  : "debugUrl1",
+//"debug"  : "debugUrl2",
+//"debug"  : "debugUrl3",
+   "release": "releaseUrl1",
+// "release": "releaseUrl2"
 
 
     ]
@@ -45,54 +43,15 @@ ext {
             "suppoutDesign"       : "com.android.support:design:${supportLibrary}",
             "supportAppcompat"    : "com.android.support:appcompat-v7:${supportLibrary}",
 
-            /*square*/
-            "okhttp3"             : "com.squareup.okhttp3:okhttp:3.9.0",
-            "okhttp-urlconnection": "com.squareup.okhttp:okhttp-urlconnection:2.5.0",
-            "logging-interceptor" : "com.squareup.okhttp3:logging-interceptor:3.9.0",
-            "picasso"             : "com.squareup.picasso:picasso:2.5.2",
-            "glide"               : "com.github.bumptech.glide:okhttp-integration:1.3.1",
-            "okio"                : "com.squareup.okio:okio:1.13.0",
-            "otto"                : "com.squareup:otto:1.3.8",
 
-            /*rxjava*/
-            "retrofit"            : "com.squareup.retrofit2:retrofit:2.3.0",
-            "converter-gson"      : "com.squareup.retrofit2:converter-gson:2.3.0",
-            "adapter-rxjava2"     : "com.squareup.retrofit2:adapter-rxjava2:2.3.0",
-            "rxjava"              : "io.reactivex.rxjava2:rxjava:2.0.6",
-            "rxandroid"           : "io.reactivex.rxjava2:rxandroid:2.0.1",
 
             /*tinker*/
             "tinker-lib"          : "com.tencent.tinker:tinker-android-lib:${tinkerVerison}",
             "tinker-anno"         : "com.tencent.tinker:tinker-android-anno:${tinkerVerison}",
 
-            /*third*/
-            "flyco"               : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.0@aar",
-            "badgeview"           : "cn.bingoogolapple:bga-badgeview:1.1.3@aar",
-            "circleImage"         : "com.github.thinkcool:circletextimageview:1.0.20151218",
-            "banner"              : "cn.bingoogolapple:bga-banner:2.0.9@aar",
-            "nineoldandroid"      : "com.nineoldandroids:library:2.4.0",
-            "tinypinyin"          : "com.github.promeg:tinypinyin:2.0.3",
-            "ormlite-android"     : "com.j256.ormlite:ormlite-android:4.48",
-            "ormlite-core"        : "com.j256.ormlite:ormlite-core:4.48",
-            "gson"                : "com.google.code.gson:gson:2.8.2",
-            "photoview"           : "com.github.chrisbanes.photoview:library:+",
-            "okhttputils"         : "com.lzy.net:okhttputils:1.6.5",
-            "systembartint"       : "com.readystatesoftware.systembartint:systembartint:1.0.3",
-            "acp"                 : "com.mylhyl:acp:1.1.7",
-            "volley"              : "com.mcxiaoke.volley:library:1.0.18",
-            "androidanimations"   : "com.daimajia.androidanimations:library:1.1.3@aar",
-            "permissions4m"       : "com.github.jokermonn:permissions4m:2.1.0-lib",
-            "log"                 : "com.orhanobut:logger:2.1.1",
-            "alertdialog"         : "com.yanzhenjie.alertdialog:alertdialog:1.0.1",
-            "permission"          : "com.yanzhenjie:permission:1.1.0",
-            "kprogresshud"        : "com.kaopiz:kprogresshud:1.0.2",
+        
             "packer-ng"               : "com.mcxiaoke.packer-ng:helper:2.0.0",
-            "testCompile"         : "junit:junit:4.12",
-            "ultra-ptr"           : "in.srain.cube:ultra-ptr:1.0.11",
-            "image-helper"        : "com.github.wustor:ImageHelper:v1.1.0",
-            "http-helper"         : "com.github.wustor:HttpHelper:v1.0.1",
-            "db-helper"           : "com.github.wustor:DBHelper:v0.0.2",
-            "download-helper"     : "com.github.wustor:DownloadHelper:v1.0.0"
+       
 
 
     ]
