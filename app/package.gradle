@@ -1,0 +1,12 @@
+apply plugin: 'packer'
+packer {
+    archiveNameFormat = '${buildType}-v${versionName}-${channel}'
+    archiveOutput = new File(project.rootProject.buildDir, "apks")
+    channelList = ['xiaomi','meizu']
+//    channelFile = new File(project.rootDir, "markets.txt")
+//    channelMap = [
+//            "Cat" : project.rootProject.file("channels/cat.txt"),
+//            "Dog" : project.rootProject.file("channels/dog.txt"),
+//            "Fish": project.rootProject.file("channels/channels.txt")
+//    ]
+}
