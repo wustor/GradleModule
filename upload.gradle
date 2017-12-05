@@ -3,7 +3,7 @@ ext {
     appName = "创美e药"
     bundleId = rootProject.ext.android.applicationId
     verName = rootProject.ext.android.versionName
-    apiToken = ""
+    apiToken = "5d30a26ef96ca348e58c1cef17fab7c8"
     iconPath = ICON_PATH
     apkPath = APK_PATH
     buildNumber = rootProject.ext.android.versionCode
@@ -14,7 +14,8 @@ ext {
 //上传至fir
 def startUpload() {
     println("开始上传至fir")
-    def process = "python upToFir.py ${upUrl} ${appName} ${bundleId} ${verName} ${apiToken} ${iconPath} ${apkPath} ${buildNumber} ${changeLog}".execute()
+//    def process = "python upToFir.py ${upUrl} ${appName} ${bundleId} ${verName} ${apiToken} ${iconPath} ${apkPath} ${buildNumber} ${changeLog}".execute()
+    def process = "python upToFir.py $upUrl $appName $bundleId $verName $apiToken $iconPath $apkPath $buildNumber $changeLog".execute()
 //获取Python脚本日志，便于出错调试
     ByteArrayOutputStream result = new ByteArrayOutputStream()
     def inputStream = process.getInputStream()
