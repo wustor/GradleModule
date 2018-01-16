@@ -1,4 +1,4 @@
-##  分离后的代码
+##  分离后的build.gradle
 
 ```
 apply plugin: 'com.android.application'
