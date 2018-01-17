@@ -29,7 +29,7 @@ map的key是compile的依赖，然后value是一个数组，因为有可能需�
 excludes.each { entry ->
         compile(entry.key) {
             excludes.value.each { childEntry ->
-                exclude(childEntry.key, childEntry.value)
+                exclude(group: childEntry.key, module: childEntry.value)
             }
         }
     }
