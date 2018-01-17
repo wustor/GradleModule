@@ -11,7 +11,7 @@
         exclude(group: 'com.squareup.okhttp3', module: 'okhttp3')
     }
 
-对于这种情况的话，需要在定义map,因为可能多个依赖需要exclude，下面就用Glide举个栗子：
+对于这种情况的话，需要额外定义一个关于exclude的map,因为可能多个依赖需要exclude，下面就用Glide举个栗子：
 
 ###  config.gradle
 
