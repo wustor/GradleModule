@@ -1,89 +1,38 @@
-##  分离后的build.gradle
+
+## exclude配置
+
+其实我的博客里面忽略了一种情况，就是dependencies中有需要exclude的情况，多谢Vanish提出了这个问题，如果单纯的去遍历一个map是不可以的，比如说下面Glide的配置情况
+
+ 
+
+       compile("com.github.bumptech.glide:glide:4.3.1") {
+       exclude(group: 'com.android.support', module: 'support-v4')
+        exclude(group: 'com.android.support', module: 'appcompat-v7')
+        exclude(group: 'com.squareup.okhttp3', module: 'okhttp3')
+    }
+
+对于这种情况的话，需要在定义map,因为可能多个依赖需要exclude，下面就用Glide举个栗子：
+
+###  config.gradle
+
+map的key是compile的依赖，然后value是一个数组，因为有可能需要剔除多个重复依赖，所以用数组来表示
+
+    excludes = ["com.github.bumptech.glide:glide:4.3.1":
+                        [
+                                'com.android.support' : 'support-v4',
+                                'com.android.support' : 'appcompat-v7',
+                                'com.squareup.okhttp3': 'okhttp3']]
+
+### build.gradle
 
 ```
-apply plugin: 'com.android.application'
-apply from: "package.gradle"
-
-def cfg = rootProject.ext.android
-def librarys = rootProject.ext.dependencies
-def tinker = rootProject.ext.tinker
-def url = rootProject.ext.url
-def startUpload = rootProject.ext.startUpload
-def keystoreProperties = new Properties()
-def keystorePropertiesFile = rootProject.file("keystore.properties")
-keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-android {
-    signingConfigs {
-        config {
-            v1SigningEnabled true
-            v2SigningEnabled true
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile file(keystoreProperties['storeFile'])
-            storePassword keystoreProperties['storePassword']
-        }
-
-
-    }
-    packagingOptions {
-        exclude 'META-INF/rxjava.properties'
-    }
-    compileSdkVersion cfg.compileSdkVersion
-    buildToolsVersion cfg.buildToolsVersion
-    dexOptions {
-        jumboMode = true
-    }
-
-    defaultConfig {
-        ndk { abiFilters "armeabi", "armeabi-v7a", "x86", "mips" }
-        applicationId cfg.applicationId
-        minSdkVersion cfg.minSdkVersion
-        targetSdkVersion cfg.targetSdkVersion
-        versionCode cfg.versionCode//更新次数
-        versionName cfg.versionName//版本号
-        //Tinker配置信息
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        multiDexEnabled true
-        buildConfigField "String", "MESSAGE", "\"${tinker.message}\""
-        buildConfigField "String", "TINKER_ID", "\"${tinker.id}\""
-        buildConfigField "String", "PLATFORM", "\"${tinker.plateform}\""
-        //Tinker相关配置end======================================
-    }
-    lintOptions {
-        checkReleaseBuilds false
-        abortOnError false
-    }
-    configurations.all {
-        resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
-    }
-    buildTypes {
-        release {
-            minifyEnabled true
-            shrinkResources true
-            buildConfigField "String", "AlphaUrl", "\"${url["release"]}\""
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
-        }
-        debug {
-            minifyEnabled true
-            shrinkResources true
-            debuggable true
-            buildConfigField "String", "AlphaUrl", "\"${url["debug"]}\""
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
+excludes.each { entry ->
+        compile(entry.key) {
+            excludes.value.each { childEntry ->
+                exclude(childEntry.key, childEntry.value)
+            }
         }
     }
-}
-apply from: "tinker.gradle"
-dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-
-    librarys.each { k, v -> compile v }
-}
-
-task toFir << {
-    startUpload()
-}
-
-
 ```
+
+然后在build.gradle中拿到这个map，然后进行遍历就好，代码已上传，有需要的可以下载进行查看。
