@@ -74,7 +74,7 @@ dependencies {
     excludes.each { entry ->
         compile(entry.key) {
             excludes.value.each { childEntry ->
-                exclude(childEntry.key, childEntry.value)
+                exclude(group: childEntry.key, module: childEntry.value)
             }
         }
 
