@@ -1,7 +1,7 @@
 
 ## exclude配置
 
-其实我的博客里面忽略了一种情况，就是dependencies中有需要exclude的情况，多谢Vanish提出了这个问题，如果单纯的去遍历一个map是不可以的，比如说下面Glide的配置情况
+其实我的博客里面忽略了一种情况，就是dependencies中有需要exclude的情况，多谢[Vanish](https://github.com/Vanish136)提出了这个问题，如果单纯的去遍历一个map是不可以的，比如说下面Glide的配置情况
 
  
 
