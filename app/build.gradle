@@ -3,6 +3,7 @@ apply from: "package.gradle"
 
 def cfg = rootProject.ext.android
 def librarys = rootProject.ext.dependencies
+def exclude = rootProject.ext.excludes
 def tinker = rootProject.ext.tinker
 def url = rootProject.ext.url
 def startUpload = rootProject.ext.startUpload
@@ -18,9 +19,7 @@ android {
             storePassword keystoreProperties['storePassword']
         }
     }
-    packagingOptions {
-        exclude 'META-INF/rxjava.properties'
-    }
+
     compileSdkVersion cfg.compileSdkVersion
     buildToolsVersion cfg.buildToolsVersion
     dexOptions {
@@ -71,8 +70,15 @@ android {
 apply from: "tinker.gradle"
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-
     librarys.each { k, v -> compile v }
+    excludes.each { entry ->
+        compile(entry.key) {
+            excludes.value.each { childEntry ->
+                exclude(childEntry.key, childEntry.value)
+            }
+        }
+
+    }
 }
 
 task toFir << {

@@ -21,10 +21,10 @@ ext {
             version  : "1.9.1",
     ]
     url = [
-"debug"  : "debugUrl1",
+            "debug"  : "debugUrl1",
 //"debug"  : "debugUrl2",
 //"debug"  : "debugUrl3",
-   "release": "releaseUrl1",
+            "release": "releaseUrl1",
 // "release": "releaseUrl2"
 
 
@@ -35,25 +35,24 @@ ext {
     tinkerVerison = "1.9.1"
     dependencies = [
             /*support库*/
-            "multidex"            : "com.android.support:multidex:1.0.1",
-            "cardview"            : "com.android.support:cardview-v7:${supportLibrary}",
-            "constraint"          : "com.android.support.constraint:constraint-layout:1.0.2",
-            "recyclerview"        : "com.android.support:recyclerview-v7:${supportLibrary}",
-            "supportV4"           : "com.android.support:support-v4:${supportLibrary}",
-            "suppoutDesign"       : "com.android.support:design:${supportLibrary}",
-            "supportAppcompat"    : "com.android.support:appcompat-v7:${supportLibrary}",
-
-
-
+            "multidex"        : "com.android.support:multidex:1.0.1",
+            "cardview"        : "com.android.support:cardview-v7:${supportLibrary}",
+            "constraint"      : "com.android.support.constraint:constraint-layout:1.0.2",
+            "recyclerview"    : "com.android.support:recyclerview-v7:${supportLibrary}",
+            "supportV4"       : "com.android.support:support-v4:${supportLibrary}",
+            "suppoutDesign"   : "com.android.support:design:${supportLibrary}",
+            "supportAppcompat": "com.android.support:appcompat-v7:${supportLibrary}",
             /*tinker*/
-            "tinker-lib"          : "com.tencent.tinker:tinker-android-lib:${tinkerVerison}",
-            "tinker-anno"         : "com.tencent.tinker:tinker-android-anno:${tinkerVerison}",
-
-        
-            "packer-ng"               : "com.mcxiaoke.packer-ng:helper:2.0.0",
-       
+            "tinker-lib"      : "com.tencent.tinker:tinker-android-lib:${tinkerVerison}",
+            "tinker-anno"     : "com.tencent.tinker:tinker-android-anno:${tinkerVerison}",
+            "packer-ng"       : "com.mcxiaoke.packer-ng:helper:2.0.0",
 
 
     ]
+    excludes = ["com.github.bumptech.glide:glide:4.3.1":
+                        [
+                                'com.android.support' : 'support-v4',
+                                'com.android.support' : 'appcompat-v7',
+                                'com.squareup.okhttp3': 'okhttp3']]
 
 }
