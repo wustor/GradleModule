@@ -25,10 +25,10 @@ map的key是compile的依赖，然后value是一个数组，因为有可能需�
 
 ### build.gradle
 
-```
+```java
 excludes.each { entry ->
         compile(entry.key) {
-            excludes.value.each { childEntry ->
+            entry.value.each { childEntry ->
                 exclude(group: childEntry.key, module: childEntry.value)
             }
         }

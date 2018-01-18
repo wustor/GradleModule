@@ -45,7 +45,7 @@ ext {
             /*tinker*/
             "tinker-lib"      : "com.tencent.tinker:tinker-android-lib:${tinkerVerison}",
             "tinker-anno"     : "com.tencent.tinker:tinker-android-anno:${tinkerVerison}",
-            "packer-ng"       : "com.mcxiaoke.packer-ng:helper:2.0.0",
+            "packer-ng"       : "com.mcxiaoke.packer-ng:helper:2.0.0"
 
 
     ]

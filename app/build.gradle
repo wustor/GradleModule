@@ -3,7 +3,7 @@ apply from: "package.gradle"
 
 def cfg = rootProject.ext.android
 def librarys = rootProject.ext.dependencies
-def exclude = rootProject.ext.excludes
+def excludes = rootProject.ext.excludes
 def tinker = rootProject.ext.tinker
 def url = rootProject.ext.url
 def startUpload = rootProject.ext.startUpload
@@ -73,7 +73,7 @@ dependencies {
     librarys.each { k, v -> compile v }
     excludes.each { entry ->
         compile(entry.key) {
-            excludes.value.each { childEntry ->
+            entry.value.each { childEntry ->
                 exclude(group: childEntry.key, module: childEntry.value)
             }
         }
